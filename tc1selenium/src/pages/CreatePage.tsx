@@ -7,9 +7,15 @@ import './PageStyles.css';
 const CreatePage: React.FC = () => {
   const navigate = useNavigate();
 
-  const handleCreate = (name: string) => {
+  const handleCreate = async (name: string) => {
+    
+    if (!name.trim()) { // valida nome
+      alert('Insira um nome ao item');
+      return;
+    }
+
     try {
-      createItem(name);
+      await createItem(name);
       alert('Item inserido com sucesso!');
       navigate('/');
     } catch (error) {
