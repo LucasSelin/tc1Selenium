@@ -8,10 +8,15 @@ const CreatePage: React.FC = () => {
   const navigate = useNavigate();
 
   const handleCreate = (name: string) => {
-    createItem(name);
-    navigate('/');
+    try {
+      createItem(name);
+      alert('Item inserido com sucesso!');
+      navigate('/');
+    } catch (error) {
+      alert('Ocorreu uma falha ao inserir o item.');
+    }
   };
-// 21321323
+
   return (
     <div className="page-container">
       <h1>Criar Novo Item</h1>

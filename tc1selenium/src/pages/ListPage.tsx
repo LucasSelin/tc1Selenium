@@ -12,8 +12,13 @@ const ListPage: React.FC = () => {
   }, []);
 
   const handleDelete = (id: number) => {
-    deleteItem(id);
-    setItems(getItems());
+    try {
+      deleteItem(id);
+      setItems(getItems());
+      alert('Item deletado com sucesso!');
+    } catch (error) {
+      alert('Ocorreu uma falha ao deletar o item.');
+    }
   };
 
   return (

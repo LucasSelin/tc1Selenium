@@ -17,8 +17,13 @@ const EditPage: React.FC = () => {
   }, [id]);
 
   const handleEdit = (updatedName: string) => {
-    updateItem(Number(id), updatedName);
-    navigate('/');
+    try {
+      updateItem(Number(id), updatedName);
+      alert('Item editado com sucesso!');
+      navigate('/');
+    } catch (error) {
+      alert('Ocorreu uma falha ao editar o item.');
+    }
   };
 
   return (
