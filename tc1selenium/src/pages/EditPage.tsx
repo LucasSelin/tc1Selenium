@@ -16,9 +16,15 @@ const EditPage: React.FC = () => {
     }
   }, [id]);
 
-  const handleEdit = (updatedName: string) => {
+  const handleEdit = async (updatedName: string) => {
+
+    if (!updatedName.trim()) { // caso edite para vazio, valida antes
+      alert('Insira um nome ao item');
+      return;
+    }
+
     try {
-      updateItem(Number(id), updatedName);
+      await updateItem(Number(id), updatedName);
       alert('Item editado com sucesso!');
       navigate('/');
     } catch (error) {
